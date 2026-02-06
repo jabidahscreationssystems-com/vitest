@@ -1,5 +1,6 @@
 export type { LoupeOptions, StringifyOptions } from './display'
 export type { DeferPromise } from './helpers'
+export type { ReconnectConfig, WebSocketRpcConfig } from './rpc-helpers'
 export type { SafeTimers } from './timers'
 export type {
   ArgumentsType,
