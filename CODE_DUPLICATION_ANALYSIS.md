@@ -1,7 +1,7 @@
 # Code Duplication Analysis Report
 
-**Date:** February 2026  
-**Analysis Scope:** Vitest monorepo  
+**Date:** February 2026
+**Analysis Scope:** Vitest monorepo
 **Method:** Manual code review + automated pattern search
 
 ## Executive Summary
@@ -9,7 +9,7 @@
 This analysis identified **4 categories of code duplication** across the Vitest codebase:
 
 1. **Test UI server startup** (3 files, ~45 lines total duplication)
-2. **Error serialization utilities** (2 files, ~30 lines duplication)  
+2. **Error serialization utilities** (2 files, ~30 lines duplication)
 3. **WebSocket reconnection logic** (2 files, ~70 lines duplication)
 4. **birpc configuration patterns** (4 files, ~60 lines duplication)
 
@@ -23,7 +23,7 @@ This analysis identified **4 categories of code duplication** across the Vitest 
 
 **Files Affected:**
 - `test/ui/test/ui.spec.ts` (lines 12-32)
-- `test/ui/test/ui-security.spec.ts` (lines 12-35)  
+- `test/ui/test/ui-security.spec.ts` (lines 12-35)
 - `test/ui/test/html-report.spec.ts` (lines 13-35)
 
 **Duplicated Pattern:**
@@ -111,7 +111,7 @@ vitest = await startVitest('test', [], { config }, {}, { stdout, stderr })
 - `packages/browser/src/node/rpc.ts` (lines 397-404)
 
 **Common Pattern:**
-```typescript
+```
 {
   post: msg => socket.send(msg),
   on: fn => socket.on('message', fn),
@@ -198,6 +198,6 @@ find packages -name "*.ts" -exec grep -l "createBirpc" {} \;
 # Find test patterns
 grep -r "beforeAll\|afterAll" test/ --include="*.ts" | wc -l
 
-# Find WebSocket patterns  
+# Find WebSocket patterns
 grep -r "reconnect\|WebSocket" packages/ --include="*.ts" -l
 ```
