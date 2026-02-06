@@ -55,9 +55,9 @@ jobs:
 
       # From https://github.com/rhysd/actionlint/blob/main/docs/usage.md#use-actionlint-on-github-actions
       - name: Check workflow files
-        run: |
-          bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
-          ./actionlint -color -shellcheck=""
+        uses: docker://rhysd/actionlint:1.7.10
+        with:
+          args: -color -shellcheck=""
 
   changed:
     runs-on: ubuntu-latest
